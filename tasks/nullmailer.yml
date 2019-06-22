@@ -20,7 +20,9 @@
   template:
     src: '{{ item.name + ".j2" }}'
     dest: /etc/nullmailer/{{ item.name }}
-    mode: '{{ item.mode |default("644") }}'
+    mode: '{{ item.mode | default("644") }}'
+    owner: '{{ item.owner | default("root") }}'
+    group: '{{ item.group | default("root") }}'
   with_items:
     - name: adminaddr
     - name: defaultdomain
