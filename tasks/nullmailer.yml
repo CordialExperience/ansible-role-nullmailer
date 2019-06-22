@@ -57,4 +57,3 @@
     state:  latest
   become:       True
   become_user:  '{{ nullmailer_become_user }}'
-
