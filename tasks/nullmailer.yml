@@ -9,8 +9,7 @@
     mode:   0755
     owner:  root
     group:  root
-  become:       True
-  become_user:  '{{ nullmailer_become_user }}'
+  become: yes
 
 - name:     configure generic mail settings
   action:
@@ -23,8 +22,7 @@
   with_items:
     - mailname
   notify:   restart_nullmailer
-  become:       True
-  become_user:  '{{ nullmailer_become_user }}'
+  become: yes
 
 - name:     configure nullmailer
   action:
@@ -47,13 +45,10 @@
       mode: '0640'
     - name: sendtimeout
   notify:   restart_nullmailer
-  become:       True
-  become_user:  '{{ nullmailer_become_user }}'
+  become: yes
 
 - name: install
-  action:
-    module: apt
-    pkg:    nullmailer
-    state:  latest
-  become:       True
-  become_user:  '{{ nullmailer_become_user }}'
+  apt:
+    name: nullmailer
+    state: present
+  become: yes
