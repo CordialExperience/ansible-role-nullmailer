@@ -11,7 +11,7 @@
 - name: configure generic mail settings
   template:
     src: mailname.j2
-    dest: {{ mailname_target | default("/etc/mailname") }}
+    dest: /etc/mailname
     mode: '644'
   notify: restart_nullmailer
   become: yes
